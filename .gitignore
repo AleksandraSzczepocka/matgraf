@@ -1,0 +1,18 @@
+# Ignoruj cache Pythona
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Ignoruj środowisko wirtualne
+venv/
+.env/
+.venv/
+
+# Ignoruj notebooki i logi
+*.ipynb
+*.log
+
+# Ignoruj pliki systemowe
+.DS_Store
+Thumbs.db
