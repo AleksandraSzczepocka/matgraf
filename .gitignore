@@ -16,3 +16,6 @@ venv/
 # Ignoruj pliki systemowe
 .DS_Store
 Thumbs.db
+
+.idea/
+
