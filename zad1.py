@@ -1,5 +1,6 @@
 import math
 
+
 class Vector3:
     def __init__(self, x, y, z):
         self.x = x
@@ -21,6 +22,11 @@ class Vector3:
     def dot(self, other): # iloczyn skalarny
         return self.x * other.x + self.y * other.y + self.z * other.z
 
+    def dot_product(self, other):
+        dot = self.dot(other)
+        cos_theta = dot / (self.length() * other.length())  # cos 0
+        return math.degrees(math.acos(cos_theta))  # 0 w stopniach
+
     def cross(self, other): # iloczyn wektorowy (wektor prostopadly)
         return Vector3(
             self.y * other.z - self.z * other.y,
@@ -38,8 +44,7 @@ class Vector3:
         return self / l # normalizacja do dlugosci 1
 
     def __repr__(self):
-        #return f"Vector3({self.x}, {self.y}, {self.z})"
-        return f"Vector3({round(self.x, 3)}, {round(self.y, 3)}, {round(self.z, 3)})"
+        return f"Vector3({self.x}, {self.y}, {self.z})"
 
     def __eq__(self, other):
         return self.x == other.x and self.y == other.y and self.z == other.z
@@ -54,18 +59,16 @@ if __name__ == "__main__":
     print("b + a =", b + a)
     print("Czy a+b == b+a?")
     if (a + b) == (b + a):
-        print("Tak")
+        print("Prawda")
     else:
-        print("Nie")
+        print("Fałsz")
 
-    # 2. Kąt między wektorami
+
     v1 = Vector3(0, 3, 0)
     v2 = Vector3(5, 5, 0)
-    dot = v1.dot(v2)
-    cos_theta = dot / (v1.length() * v2.length()) # cos 0
-    angle = math.degrees(math.acos(cos_theta)) # 0 w stopniach
-    #print("Kąt między [0,3,0] i [5,5,0] =", angle, "stopni")
-    print(f"Kąt między [0,3,0] i [5,5,0] = {round(angle, 2)} stopni")
+
+    angle = v1.dot_product(v2)
+    print("Kąt między [0,3,0] i [5,5,0] =", angle, "stopni")
 
     # 3. Wektor prostopadły
     v3 = Vector3(4, 5, 1)
